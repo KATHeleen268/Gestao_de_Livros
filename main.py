@@ -1,27 +1,12 @@
-print("Olá bem vindo a biblioteca")
+from menu import menu
 
-def menu():
-    while True:
-        print("1. Inserir livros")
-        print("2. Remover livros")
-        print("3. Listar livros")
-        print("4. Buscar livros")
-        print("5. Sair")
+def main():
+     biblioteca = [
+       {"id": 1, "titulo": "1984", "autores": "George Orwell", "editora": "Grupo Companhia das Letras", "ano": 2009, "situação": "Disponível" },
+       {"id": 2, "titulo": "O clube do tricô", "autores": "Kate Jacobs", "editora": "Amarilys Editora", "ano": 2010, "situação": "Emprestado"}
+]
 
-        opcao = input("Digite uma opcâo: ")
+     menu(biblioteca)   
 
-        if opcao == "1":
-                print("Inserindo livros")
-        elif opcao == "2":
-                print("Removendo livros")
-        elif opcao == "3":
-                print("Listando livros")
-        elif opcao == "4":
-                print("Buscando livros")
-        elif opcao == "5":
-                print("Saindo do programa")
-                break
-        else:
-            print("Não existe essa opção! Tente novamente com um número válido.")
-
-menu()
+if __name__ == "__main__":
+     main()
