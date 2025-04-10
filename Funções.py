@@ -13,7 +13,8 @@ def inserir_livros(biblioteca):
         "titulo": titulo,
         "autores": autores,
         "editora": editora,
-        "ano": ano
+        "ano": ano,
+        "situação": "Disponível"
     }
 
     biblioteca.append(novo_livro)
@@ -29,4 +30,58 @@ def remover_livros(biblioteca):
                 biblioteca.remove(livro)
                 print(f"Livro com titulo {titulo_remover} removido com sucesso!")
                 return
-        print(f"Nenhum filme com o titulo {titulo_remover} foi encontrado.")
+        print(f"Nenhum livro com o titulo {titulo_remover} foi encontrado.")
+
+
+#função que checa a situação do livro
+def situacao_livro(biblioteca):
+    titulo_situacao = input("Digite o livro que deseja ver a situação: ").strip().lower()
+    encontrado = False
+
+    for livro in biblioteca:
+        if titulo_situacao in livro["titulo"].strip().lower():
+            print(f"O livro {livro['titulo']} está {livro['situação']}")
+            encontrado = True
+            break
+
+    if not encontrado:
+        print("Livro não existe na biblioteca.")
+     
+#função de listar os livros de formas geral e especificas
+def listar_livros(biblioteca):
+    while True:
+        print("1. Listar todos os livros")
+        print("2. Listar apenas os livros disponíveis")
+        print("3. Listar apenas os livros emprestados")
+        print("4. Listar por editora")
+        print("5. Listar por ano")
+        print("6. Voltar ao menu principal")
+        
+        opcao1 = input("Qual a listagem que deseja? ")
+        
+        if opcao1 == "1":
+            for livro in biblioteca:
+                print(livro)
+        elif opcao1 == "2":
+            for livro in biblioteca:
+                if livro['situação'] == "Disponível":
+                    print(livro)
+        elif opcao1 == "3":
+            for livro in biblioteca:
+                if livro["situação"] == "Emprestado": 
+                    print(livro)
+        elif opcao1 == "4":
+            editora = input("Digite o nome da editora: ").strip().lower()
+            for livro in biblioteca:
+                if livro["editora"].strip().lower() == editora:
+                    print(livro)
+        elif opcao1 == "5":
+            ano = int(input("Digite o ano que deseja: "))
+            for livro in biblioteca:
+                if livro["ano"] == ano:
+                    print(livro)
+        elif opcao1 == "6":
+            print("retornando ao menu principal")
+            break
+        else:
+            print("Opção inválida. Tente novamente com um valor válido.")
