@@ -1,4 +1,4 @@
-from Funções import inserir_livros, remover_livros, listar_livros, buscar_livros, situacao_livro
+from Funções import inserir_livros, remover_livros, listar_livros, buscar_livros, situacao_livro, alugar_livros
 
 print("Olá bem vindo a biblioteca")
 
@@ -9,7 +9,8 @@ def menu(biblioteca):
         print("3. Listar livros")
         print("4. Buscar livros")
         print("5. Checar a situação do livro")
-        print("6. Sair")
+        print("6. Alugar livros")
+        print("7. Sair")
 
         opcao = input("Digite uma opcâo: ")
 
@@ -29,6 +30,9 @@ def menu(biblioteca):
                print("Checando a situação do livro")
                situacao_livro(biblioteca)
         elif opcao == "6":
+               print("Alugando livros")
+               alugar_livros(biblioteca)
+        elif opcao == "7":
                 print("Saindo do programa")
                 break
         else:

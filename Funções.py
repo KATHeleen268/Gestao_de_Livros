@@ -46,6 +46,25 @@ def situacao_livro(biblioteca):
 
     if not encontrado:
         print("Livro não existe na biblioteca.")
+
+#função de alugar livros ou seja troca a situação de disponivel para emprestado, caso não esteja disponivel
+def alugar_livros(biblioteca):
+    id_aluguel = int(input("Digite o id do livro que deseja alugar: "))
+    
+    encontrado = False
+
+    for livro in biblioteca:
+        if livro['id'] == id_aluguel:
+            print(f"O livro '{livro['titulo']}' (ID : {livro['id']}) foi encontrado")
+            encontrado = True
+            if livro["situação"] == "Disponível":
+                livro["situação"] = "Emprestado"
+                print(f"O livro '{livro['titulo']}' foi emprestado com sucesso!")
+            else:
+                print(f"O livro '{livro['titulo']}' já está emprestado.")
+            break
+    if not encontrado:
+        print("O livro desejado não foi encontrado.")
      
 #função de listar os livros de formas geral e especificas
 def listar_livros(biblioteca):
