@@ -35,7 +35,7 @@ def remover_livros(biblioteca):
 
 #função que checa a situação do livro
 def situacao_livro(biblioteca):
-    titulo_situacao = input("Digite o livro que deseja ver a situação: ").strip().lower()
+    titulo_situacao = input("Digite o titulo do livro que deseja ver a situação: ").strip().lower()
     encontrado = False
 
     for livro in biblioteca:
@@ -85,3 +85,23 @@ def listar_livros(biblioteca):
             break
         else:
             print("Opção inválida. Tente novamente com um valor válido.")
+
+#função de buscar_livros
+def buscar_livros(biblioteca):
+    try:
+        id_busca = int(input("Digite o id do livro desejado: "))
+    except ValueError:
+        print("ID inválido! Digite apenas números.")
+        return
+
+    encontrado = False
+
+    for livro in biblioteca:
+        if livro ['id'] == id_busca:
+                print(livro)
+                encontrado = True
+                break
+
+    if not encontrado:
+        print("Não existe na biblioteca")
+        
