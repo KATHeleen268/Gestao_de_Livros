@@ -1,3 +1,5 @@
+from funçõescsv import salvar_livros
+
 #ordem id, titulo, autores, editora, ano, situação
 
 #função de inserir livros
@@ -18,6 +20,7 @@ def inserir_livros(biblioteca):
     }
 
     biblioteca.append(novo_livro)
+    salvar_livros(biblioteca)
     print("Livro inserido com sucesso!")
 
 
@@ -28,6 +31,7 @@ def remover_livros(biblioteca):
         for livro in biblioteca:
             if livro["titulo"] == titulo_remover:
                 biblioteca.remove(livro)
+                salvar_livros(biblioteca)
                 print(f"Livro com titulo {titulo_remover} removido com sucesso!")
                 return
         print(f"Nenhum livro com o titulo {titulo_remover} foi encontrado.")
@@ -59,12 +63,34 @@ def alugar_livros(biblioteca):
             encontrado = True
             if livro["situação"] == "Disponível":
                 livro["situação"] = "Emprestado"
+                salvar_livros(biblioteca)
                 print(f"O livro '{livro['titulo']}' foi emprestado com sucesso!")
             else:
                 print(f"O livro '{livro['titulo']}' já está emprestado.")
             break
     if not encontrado:
         print("O livro desejado não foi encontrado.")
+
+#função de devolução de livros
+def devolver_livros(biblioteca):
+    id_devolucao = int(input("Digite o ID do livro que deseja devolver: "))
+
+    encontrado = False
+
+    for livro in biblioteca:
+        if livro['id'] == id_devolucao:
+            encontrado = True
+            if livro["situação"] == "Emprestado":
+                livro["situação"] = "Disponível"
+                print(f"O livro '{livro['titulo']}' foi devolvido com sucesso.")
+                salvar_livros(biblioteca)
+        else:
+            print(f"O livro '{livro['titulo']}' já está disponivel na biblioteca")
+        break
+
+    if not encontrado:
+        print("Livro não encontrado na biblioteca.")
+
      
 #função de listar os livros de formas geral e especificas
 def listar_livros(biblioteca):
