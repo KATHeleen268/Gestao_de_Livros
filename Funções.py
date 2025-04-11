@@ -1,10 +1,11 @@
+#importando a função salvar_livros usada sempre que um dado é alterado na biblioteca salvando assim no csv
 from funçõescsv import salvar_livros
 
 #ordem id, titulo, autores, editora, ano, situação
 
-#função de inserir livros
+#função de inserir livros que recebe os dados do usario e depois adicona e salva na biblioteca
 def inserir_livros(biblioteca):
-    id = input("Digite o código do livro: ")
+    id = int(input("Digite o código do livro: ")) #pede o id ao usuario e o receb como inteiro 
     titulo = input("Digite o titulo do livro: ")
     autores = input("Digite o nome do(s) autor(a) do livro: ")
     editora = input("digite o nome da editora do livro: ")
@@ -18,15 +19,15 @@ def inserir_livros(biblioteca):
         "ano": ano,
         "situação": "Disponível"
     }
-
-    biblioteca.append(novo_livro)
+    #cria um dicionario com os novos dados e define sua situação inicial como padrão disponivel
+    biblioteca.append(novo_livro) 
     salvar_livros(biblioteca)
     print("Livro inserido com sucesso!")
 
 
-#função remover o livro
+#função remover o livro, que remove um livro da lista, tendo como chave o titulo
 def remover_livros(biblioteca):
-        titulo_remover = input("Digite o titulo do livro que você deseja remover: ")
+        titulo_remover = input("Digite o titulo do livro que você deseja remover: ") #pedde o titulo ao usuario par poder comparar e imprimir
 
         for livro in biblioteca:
             if livro["titulo"] == titulo_remover:
@@ -131,15 +132,15 @@ def listar_livros(biblioteca):
         else:
             print("Opção inválida. Tente novamente com um valor válido.")
 
-#função de buscar_livros
+#função de buscar_livros que permite encontrar um livro pelo id
 def buscar_livros(biblioteca):
     try:
-        id_busca = int(input("Digite o id do livro desejado: "))
+        id_busca = int(input("Digite o id do livro desejado: ")) #pedindo ao ussuario o id desejado
     except ValueError:
         print("ID inválido! Digite apenas números.")
         return
 
-    encontrado = False
+    encontrado = False #flag usada para saber se o livro foi encontrado ou não
 
     for livro in biblioteca:
         if livro ['id'] == id_busca:

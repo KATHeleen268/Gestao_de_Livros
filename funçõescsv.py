@@ -15,7 +15,7 @@ def carregar_livros():
                      "autores": livros_csv["autores"],
                      "editora": livros_csv["editora"],
                      "ano": int(livros_csv["ano"]),
-                     "situação": livros_csv["situacao"]
+                     "situação": livros_csv["situação"]
                  }
                  biblioteca.append(livro)
     except FileNotFoundError:
