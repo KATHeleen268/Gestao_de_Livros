@@ -42,7 +42,7 @@ def remover_livros(biblioteca):
 
 #função que checa a situação do livro
 def situacao_livro(biblioteca):
-    titulo_situacao = input("Digite o titulo do livro que deseja ver a situação: ").strip().lower() #irá pedir o valor ao usuario e assim os metodos stip que converte tudo para mnusculas
+    titulo_situacao = input("Digite o titulo do livro que deseja ver a situação: ").strip().lower() #irá pedir o valor ao usuario e assim os metodos strip que converte tudo para mnusculas
 
     encontrado = False #flag que auxilia no resultado da busca
 
@@ -90,10 +90,9 @@ def devolver_livros(biblioteca):
                 livro["situação"] = "Disponível"
                 print(f"O livro '{livro['titulo']}' foi devolvido com sucesso.")
                 salvar_livros(biblioteca) #chama a função de salvar livro 
-
-        else:
-            print(f"O livro '{livro['titulo']}' já está disponivel na biblioteca")
-        break
+            else:
+                print(f"O livro '{livro['titulo']}' já está disponivel na biblioteca")
+            break
 
     if not encontrado:
         print("Livro não encontrado na biblioteca.")

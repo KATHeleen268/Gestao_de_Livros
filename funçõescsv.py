@@ -38,4 +38,4 @@ def salvar_livros(biblioteca):
 
         #escreve cada livro da lista como uma linha do arquivo
         for livro in biblioteca:
-            registro_biblioteca.writerow(livro) #salava cada dicionario como uma linha do csv
+            registro_biblioteca.writerow(livro) #salva cada dicionario como uma linha do csv

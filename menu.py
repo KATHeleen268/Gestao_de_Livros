@@ -1,10 +1,10 @@
-#importa as funções que estão em outro arqui
+#importa as funções que estão em outro arquivo
 from Funções import inserir_livros, remover_livros, listar_livros, buscar_livros, situacao_livro, alugar_livros, devolver_livros
 
 #mensagem de boas vindas
 print("Olá bem vindo a biblioteca")
 
-#função de menu principal que receb como parametro a lista de livros e as opcoes disponiveis para interação do usuario
+#função de menu principal que recebe como parametro a lista de livros e as opcoes disponiveis para interação do usuario
 def menu(biblioteca):
     while True: #loop que só será encerrado se o usuario esclher sair
         print("1. Inserir livros")
